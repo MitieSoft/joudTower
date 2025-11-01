@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import heroImage1 from '../assets/images/Joud-Tower.png';
-import heroImage2 from '../assets/images/11.png';
-import heroImage3 from '../assets/images/7.png';
+import heroImage1 from '../assets/images/Joud-Tower.jpg';
+import heroImage2 from '../assets/images/11.jpg';
+import heroImage3 from '../assets/images/7.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function HeroSection() {

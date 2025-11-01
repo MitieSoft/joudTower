@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import aboutUsImage from '../assets/images/About-us.png';
+import aboutUsImage from '../assets/images/About-us.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function OverviewSection() {

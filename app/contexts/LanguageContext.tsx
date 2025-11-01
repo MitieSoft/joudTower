@@ -170,7 +170,7 @@ const translations: Record<Language, Translations> = {
       email: 'Email *',
       phoneNumber: 'Phone Number *',
       submitNow: 'SUBMIT NOW',
-      description: "Rest assured; our expert team is always available to guide you to your ideal home, ensuring your comfort and satisfaction every step of the way. Let's embark on this joyful journey together — your perfect, tranquil residence awaits.",
+      description: "Joud Tower, with its unrivalled location, ultra-premium interiors, and luxurious amenities and facilities, is a lasting asset that will deliver steady capital growth. Enjoy the best of both worlds: a beautiful, luxurious home that also serves as a lifelong investment.",
     },
     footer: {
       description: 'Joud Tower represents the pinnacle of luxury living in the heart of the city. This stunning residential tower offers unparalleled comfort, modern amenities, and breathtaking views.',
@@ -264,7 +264,7 @@ const translations: Record<Language, Translations> = {
       email: 'البريد الإلكتروني *',
       phoneNumber: 'رقم الهاتف *',
       submitNow: 'إرسال الآن',
-      description: 'اطمئن؛ فريقنا الخبير متاح دائماً لإرشادك إلى منزلك المثالي، وضمان راحتك ورضاك في كل خطوة على الطريق. دعنا نبدأ هذه الرحلة المبهجة معاً — مسكنك المثالي والهادئ ينتظرك.',
+      description: 'برج الجود، بموقعه الذي لا نظير له والمساحات الداخلية الفاخرة للغاية والمرافق الفاخرة، هو أصل دائم سيحقق نموًا رأس ماليًا مستقرًا. استمتع بأفضل ما في العالمين: منزل جميل وفاخر يعمل أيضًا كاستثمار مدى الحياة.',
     },
     footer: {
       description: 'يمثل برج الجود قمة العيش الفاخر في قلب المدينة. يوفر هذا البرج السكني المذهل راحة لا مثيل لها ومرافق حديثة وإطلالات خلابة.',

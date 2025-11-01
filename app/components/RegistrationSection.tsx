@@ -72,10 +72,10 @@ export default function RegistrationSection() {
 
           {/* Div 2 - Big Image Covering Whole Div */}
           <div 
-      className={`relative min-h-[600px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+      className={`relative h-[600px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{
         backgroundImage: `url(${arcImage.src})`,
-        backgroundSize: 'contain',
+        backgroundSize: '110%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}

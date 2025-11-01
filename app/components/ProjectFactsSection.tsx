@@ -34,23 +34,23 @@ export default function ProjectFactsSection() {
   const facts = [
     {
       label: 'Property Type',
-      value: '1-4 BR Apartments | Townhouses | Penthouses',
+      value: '2-5 BR Apartments & Penthouses',
     },
     {
       label: 'Starting Prices',
-      value: 'AED 3,500,000',
+      value: 'AED 3,600,000',
     },
     {
       label: 'Payment Plan',
-      value: '65% / 35%',
+      value: '10% / 55% / 35%',
     },
     {
       label: 'Developer',
-      value: 'Aldar Properties',
+      value: 'Albatha Real Estate',
     },
     {
-      label: 'Area Size',
-      value: 'From 968 Sq. Ft',
+      label: 'Total Storeys',
+      value: '55 Storeys',
     },
     {
       label: 'WHO CAN BUY',
