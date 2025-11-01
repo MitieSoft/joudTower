@@ -33,8 +33,8 @@ export default function OverviewSection() {
   return (
     <section ref={sectionRef} className="w-full bg-white">
       {/* Top Information Bar */}
-      <div className={w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-6 sm:py-8 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}}>
-        <div className={flex flex-row items-center gap-2 flex-shrink-0 ${isRTL ? 'text-right' : 'text-left'}}>
+      <div className={`w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-6 sm:py-8 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`flex flex-row items-center gap-2 flex-shrink-0 ${isRTL ? 'text-right' : 'text-left'}`}>
           <span className="text-gray-700 text-xs sm:text-sm md:text-base lg:text-lg font-medium whitespace-nowrap">
             {t.overview.pricesStartFrom}
           </span>
