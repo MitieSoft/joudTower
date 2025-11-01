@@ -36,20 +36,20 @@ export default function OverviewSection() {
   return (
     <section ref={sectionRef} className="w-full bg-white">
       {/* Top Information Bar */}
-      <div className={`w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-6 sm:py-8 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}`}>
+      <div className={`w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 py-6 sm:py-6 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}`}>
         <div className={`flex flex-row items-center gap-2 flex-shrink-0 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-x-0' : isRTL ? 'opacity-0 translate-x-5' : 'opacity-0 -translate-x-5'} ${isRTL ? 'text-right' : 'text-left'}`}>
           <span className="text-gray-700 text-xs sm:text-sm md:text-base lg:text-lg font-medium whitespace-nowrap">
             {t.overview.pricesStartFrom}
           </span>
-          <span className="text-[#792f41] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl font-bold whitespace-nowrap">
+          <span className="text-[#792f41] text-sm sm:text-lg md:text-xl lg:text-xl xl:text-xl 2xl:text-2xl font-bold whitespace-nowrap">
             AED 3,600,000
           </span>
         </div>
         <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-shrink-0">
-          <button className={`px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-200 whitespace-nowrap ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
+          <button className={`px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-200 whitespace-nowrap ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
             {t.overview.downloadBrochure}
           </button>
-          <button className={`hidden sm:block px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-white hover:bg-[#9d552d] text-[#9d552d] hover:text-white text-xs sm:text-sm md:text-base lg:text-lg xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-300 whitespace-nowrap shadow-md ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
+          <button className={`hidden sm:block px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-white hover:bg-[#9d552d] text-[#9d552d] hover:text-white text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-300 whitespace-nowrap shadow-md ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
             {t.overview.getFreeConsultation}
           </button>
         </div>
