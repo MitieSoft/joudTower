@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full overflow-x-hidden">
       <Header />
       <HeroSection />
       <div id="overview">
@@ -24,7 +24,11 @@ export default function Home() {
       <div id="floor-plans">
         <FloorPlansSection />
       </div>
-      <AmenitiesFacilitiesSection />
+
+      <div id="amenities">
+      <AmenitiesFacilitiesSection /> 
+      </div>
+      {/* <AmenitiesFacilitiesSection /> */}
       <ProjectFactsSection />
       <div id="pricing">
         <PaymentPlanSection />
