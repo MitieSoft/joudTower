@@ -17,6 +17,9 @@ export default function RegistrationSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+        } else {
+          // Reset animation when scrolling up and out of view
+          setIsVisible(false);
         }
       },
       { threshold: 0.1 }
@@ -36,8 +39,8 @@ export default function RegistrationSection() {
   return (
     <section ref={sectionRef} className="bg-[#decfca] transition-all duration-1000 ease-out">
         {/* Main Title - Outside Container */}
-        <div className={`text-center py-8 bg-white transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#792f41]" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
+        <div className={`text-center py-8 bg-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#792f41] transition-all duration-1000 delay-100" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
             {t.specification.title}
           </h2>
         </div>
@@ -52,7 +55,7 @@ export default function RegistrationSection() {
           
           
           {/* Div 1 - Text + Image */}
-          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100' : isRTL ? 'opacity-0 translate-x-10' : 'opacity-0 -translate-x-10'} flex flex-col justify-between h-full`}>
+          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0 scale-100' : isRTL ? 'opacity-0 translate-x-10 scale-95' : 'opacity-0 -translate-x-10 scale-95'} flex flex-col justify-between h-full`}>
             <div>
               <div className={`space-y-4 text-lg text-black pt-4 sm:pt-4 md:pt-6 lg:pt-8 ${isRTL ? 'text-right pl-8' : 'text-left pr-8'}`}>
                 <p>{t.specification.structureDetails}</p>
@@ -60,7 +63,7 @@ export default function RegistrationSection() {
               </div>
             </div>
 
-             <div className={`relative w-full h-80 mt-auto ${isRTL ? '-left-20' : '-right-20'} -bottom-20 z-20 hidden lg:block`}>
+             <div className={`relative w-full h-80 mt-auto ${isRTL ? '-left-20' : '-right-20'} -bottom-20 z-20 hidden lg:block transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'}`}>
                <Image
                  src={image2.src}
                  alt="Joud Tower interior view"
@@ -72,7 +75,7 @@ export default function RegistrationSection() {
 
           {/* Div 2 - Big Image Covering Whole Div */}
           <div 
-      className={`object-fit relative h-[600px] lg:h-[700px] xl:h-[650px] 2xl:h-[650px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`object-fit relative h-[600px] lg:h-[700px] xl:h-[650px] 2xl:h-[650px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
       style={{
         backgroundImage: `url(${arcImage.src})`,
         backgroundSize: '120%',
@@ -84,8 +87,8 @@ export default function RegistrationSection() {
           </div>
 
           {/* Div 3 - Image + Apartment List */}
-          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100' : isRTL ? 'opacity-0 -translate-x-10' : 'opacity-0 translate-x-10'}`}>
-             <div className={`relative w-full h-64 mb-8 ${isRTL ? '-right-20' : '-left-20'} -top-20 lg:-top-12  xl:-top-18 2xl:-top-20 z-20 hidden lg:block`}>
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0 scale-100' : isRTL ? 'opacity-0 -translate-x-10 scale-95' : 'opacity-0 translate-x-10 scale-95'}`}>
+             <div className={`relative w-full h-64 mb-8 ${isRTL ? '-right-20' : '-left-20'} -top-20 lg:-top-12  xl:-top-18 2xl:-top-20 z-20 hidden lg:block transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'}`}>
                <Image
                  src={image5.src}
                  alt="Joud Tower curved exterior"
@@ -94,7 +97,7 @@ export default function RegistrationSection() {
                />
              </div>
 
-            <div className={`space-y-2 text-md text-black leading-relaxed pt-4 sm:pt-4 md:pt-0 lg:pt-0 ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-8 lg:pl-8'}`}>
+            <div className={`space-y-2 text-md text-black leading-relaxed pt-4 sm:pt-4 md:pt-0 lg:pt-0 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'} ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-8 lg:pl-8'}`}>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom2}

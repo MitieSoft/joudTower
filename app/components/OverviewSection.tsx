@@ -14,6 +14,9 @@ export default function OverviewSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+        } else {
+          // Reset animation when scrolling up and out of view
+          setIsVisible(false);
         }
       },
       { threshold: 0.1 }
@@ -33,20 +36,20 @@ export default function OverviewSection() {
   return (
     <section ref={sectionRef} className="w-full bg-white">
       {/* Top Information Bar */}
-      <div className={`w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-6 sm:py-8 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className={`flex flex-row items-center gap-2 flex-shrink-0 ${isRTL ? 'text-right' : 'text-left'}`}>
+      <div className={`w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-6 sm:py-8 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-5'}`}>
+        <div className={`flex flex-row items-center gap-2 flex-shrink-0 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-x-0' : isRTL ? 'opacity-0 translate-x-5' : 'opacity-0 -translate-x-5'} ${isRTL ? 'text-right' : 'text-left'}`}>
           <span className="text-gray-700 text-xs sm:text-sm md:text-base lg:text-lg font-medium whitespace-nowrap">
             {t.overview.pricesStartFrom}
           </span>
-          <span className="text-[#792f41] text-sm sm:text-lg md:text-xl lg:text-2xl font-bold whitespace-nowrap">
+          <span className="text-[#792f41] text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-xl 2xl:text-2xl font-bold whitespace-nowrap">
             AED 3,600,000
           </span>
         </div>
         <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-shrink-0">
-          <button className="px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full transition-colors whitespace-nowrap">
+          <button className={`px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-base lg:text-base xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-200 whitespace-nowrap ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
             {t.overview.downloadBrochure}
           </button>
-          <button className="hidden sm:block px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-white hover:bg-[#9d552d] text-[#9d552d] hover:text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full transition-colors whitespace-nowrap shadow-md">
+          <button className={`hidden sm:block px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-white hover:bg-[#9d552d] text-[#9d552d] hover:text-white text-xs sm:text-sm md:text-base lg:text-lg xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-300 whitespace-nowrap shadow-md ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
             {t.overview.getFreeConsultation}
           </button>
         </div>
@@ -57,18 +60,18 @@ export default function OverviewSection() {
         <div className="mb-12 sm:mb-16 lg:mb-15">
           <div className="space-y-4 sm:space-y-6">
             <div className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 md:gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] md:text-[clamp(2.5rem,6vw,5rem)] lg:text-[clamp(2.5rem,7vw,5.5rem)] xl:text-[clamp(3rem,7vw,7rem)] 2xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] sm:whitespace-nowrap`}>
+              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] md:text-[clamp(2.5rem,6vw,5rem)] lg:text-[clamp(2.5rem,7.8vw,7rem)] xl:text-[clamp(3rem,8vw,7.5rem)] 2xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] sm:whitespace-nowrap`}>
                 {t.overview.beyondLimits}
               </h1>
-              <p className={`text-[#555555] text-base leading-relaxed max-w-md mt-4 sm:mt-8 hidden md:block ${isRTL ? 'lg:mr-8 text-center sm:text-right' : 'lg:ml-8 lg:mr-32 text-center'}`}>
+              <p className={`text-[#555555] text-base leading-relaxed max-w-md mt-4 sm:mt-8 hidden md:block ${isRTL ? 'lg:mr-8 text-center sm:text-right' : 'lg:ml-8 lg:mr-6 xl:mr-24 2xl:mr-32 text-center'}`}>
                 {t.overview.description1}
               </p>
             </div>
             <div className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 md:gap-8 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <p className={`text-[#555555] text-base leading-relaxed max-w-md mt-4 sm:mt-8 hidden md:block ${isRTL ? 'lg:mr-8 text-center sm:text-right order-2 sm:order-1' : 'lg:ml-8 lg:mr-32 text-center order-2 sm:order-1'}`}>
+              <p className={`text-[#555555] text-base leading-relaxed max-w-md mt-4 sm:mt-8 hidden md:block ${isRTL ? 'lg:mr-8 text-center sm:text-right order-2 sm:order-1' : 'lg:ml-8 lg:mr-6 xl:mr-24 2xl:mr-32 text-center order-2 sm:order-1'}`}>
                 {t.overview.description2}
               </p>
-              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] md:text-[clamp(2.5rem,6vw,5rem)] lg:text-[clamp(2.5rem,7vw,5.5rem)] xl:text-[clamp(3rem,7.5vw,7rem)] 2xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] text-right ml-auto order-1 sm:order-2 sm:whitespace-nowrap`}>
+              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] md:text-[clamp(2.5rem,6vw,5rem)] lg:text-[clamp(2.5rem,7.8vw,7rem)] xl:text-[clamp(3rem,8vw,7.5rem)] 2xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] text-right ml-auto order-1 sm:order-2 sm:whitespace-nowrap`}>
                 {t.overview.spaceAwaits}
               </h1>
             </div>

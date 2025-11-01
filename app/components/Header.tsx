@@ -44,8 +44,28 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const handleNavClick = () => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     setIsMobileMenuOpen(false);
+    
+    if (href === '#') {
+      scrollToTop();
+      return;
+    }
+
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      const headerHeight = 80; // Adjust based on your header height
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const handleLanguageChange = (lang: 'en' | 'ar') => {
@@ -55,12 +75,12 @@ export default function Header() {
 
   return (
     <header
-      className={`w-full transition-all duration-300 sticky top-0 z-50 ${
+      className={`w-full transition-all duration-300 fixed top-0 left-0 right-0 z-50 ${
         isScrolled ? 'bg-[#792f41]' : 'bg-[#792f41]'
       }`}
     >
       {/* Container for content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-5 2xl:py-6 flex items-center justify-between relative">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-3 lg:py-4 2xl:py-6 flex items-center justify-between relative">
         {/* Left - Logo */}
         <div className="flex items-center gap-2 md:gap-3 z-20">
           <button
@@ -75,31 +95,36 @@ export default function Header() {
         <nav className={`absolute ${isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'} hidden lg:flex items-center gap-8 2xl:gap-12`}>
           <a
             href="#overview"
-            className="text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
+            onClick={(e) => handleNavClick(e, '#overview')}
+            className="text-white text-base md:text-base lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
           >
             {t.header.overview}
           </a>
           <a
             href="#floor-plans"
-            className="text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
+            onClick={(e) => handleNavClick(e, '#floor-plans')}
+            className="text-white text-base  md:text-base lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
           >
             {t.header.floorPlans}
           </a>
           <a
             href="#pricing"
-            className="text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
+            onClick={(e) => handleNavClick(e, '#pricing')}
+            className="text-white text-base  md:text-lg lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
           >
             {t.header.pricing}
           </a>
           <a
             href="#gallery"
-            className="text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
+            onClick={(e) => handleNavClick(e, '#gallery')}
+            className="text-white text-base md:text-lg lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
           >
             {t.header.gallery}
           </a>
           <a
             href="#contact"
-            className="text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
+            onClick={(e) => handleNavClick(e, '#contact')}
+            className="text-white text-base md:text-lg lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
           >
             {t.header.contactUs}
           </a>
@@ -212,36 +237,36 @@ export default function Header() {
             <nav className="flex flex-col py-4">
               <a
                 href="#overview"
-                onClick={handleNavClick}
-                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors ${isRTL ? 'text-right' : 'text-left'}`}
+                onClick={(e) => handleNavClick(e, '#overview')}
+                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors cursor-pointer ${isRTL ? 'text-right' : 'text-left'}`}
               >
                 {t.header.overview}
               </a>
               <a
                 href="#floor-plans"
-                onClick={handleNavClick}
-                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors ${isRTL ? 'text-right' : 'text-left'}`}
+                onClick={(e) => handleNavClick(e, '#floor-plans')}
+                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors cursor-pointer ${isRTL ? 'text-right' : 'text-left'}`}
               >
                 {t.header.floorPlans}
               </a>
               <a
                 href="#pricing"
-                onClick={handleNavClick}
-                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors ${isRTL ? 'text-right' : 'text-left'}`}
+                onClick={(e) => handleNavClick(e, '#pricing')}
+                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors cursor-pointer ${isRTL ? 'text-right' : 'text-left'}`}
               >
                 {t.header.pricing}
               </a>
               <a
                 href="#gallery"
-                onClick={handleNavClick}
-                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors ${isRTL ? 'text-right' : 'text-left'}`}
+                onClick={(e) => handleNavClick(e, '#gallery')}
+                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors cursor-pointer ${isRTL ? 'text-right' : 'text-left'}`}
               >
                 {t.header.gallery}
               </a>
               <a
                 href="#contact"
-                onClick={handleNavClick}
-                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors ${isRTL ? 'text-right' : 'text-left'}`}
+                onClick={(e) => handleNavClick(e, '#contact')}
+                className={`text-white px-6 py-3 text-base font-medium hover:bg-[#8a3a51] transition-colors cursor-pointer ${isRTL ? 'text-right' : 'text-left'}`}
               >
                 {t.header.contactUs}
               </a>
