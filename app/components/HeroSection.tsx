@@ -27,7 +27,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] overflow-hidden">
+    <section className="relative w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[80vh] 2xl:h-[90vh] overflow-hidden">
       {/* Background Image Slider */}
       <div className="absolute inset-0 w-full h-full">
         {heroImages.map((image, index) => (
