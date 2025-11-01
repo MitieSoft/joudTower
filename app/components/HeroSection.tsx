@@ -56,7 +56,7 @@ export default function HeroSection() {
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 relative z-10">
           <div className="flex justify-center">
             <div className="text-white text-center max-w-4xl w-full">
-              <h1 className={`text-5xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-9xl ${isRTL ? 'font-extrabold' : 'font-medium'}  leading-tight px-4 sm:px-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} sm:whitespace-nowrap`} style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
+              <h1 className={`text-5xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-7xl 2xl:text-9xl ${isRTL ? 'font-extrabold' : 'font-medium'}  leading-tight px-4 sm:px-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} sm:whitespace-nowrap`} style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
                 {t.hero.title}
               </h1>
               {/* <p className={`text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl text-white ${isRTL ? 'font-bold' : 'font-normal'} mb-4 sm:mb-6 md:mb-8 px-4 sm:px-0 transition-all duration-1000 delay-200 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ fontFamily: 'Univers, Arial, sans-serif' }}>

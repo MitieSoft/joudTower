@@ -60,7 +60,7 @@ export default function Header() {
       }`}
     >
       {/* Container for content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-5 xl:py-5 flex items-center justify-between relative">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-5 2xl:py-6 flex items-center justify-between relative">
         {/* Left - Logo */}
         <div className="flex items-center gap-2 md:gap-3 z-20">
           <button
@@ -72,7 +72,7 @@ export default function Header() {
         </div>
 
         {/* Center - Navigation Links (Desktop) */}
-        <nav className={`absolute ${isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'} hidden lg:flex items-center gap-8 xl:gap-12`}>
+        <nav className={`absolute ${isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'} hidden lg:flex items-center gap-8 2xl:gap-12`}>
           <a
             href="#overview"
             className="text-white text-base md:text-lg font-medium hover:opacity-80 transition-opacity"
