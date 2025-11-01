@@ -108,7 +108,7 @@ export default function AmenitiesFacilitiesSection() {
   ];
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#decfca] transition-all duration-1000 ease-out relative">
+    <section ref={sectionRef} className="w-full bg-[#decfca] transition-all duration-1000 ease-out relative overflow-x-hidden">
       {/* Background Image with Low Opacity */}
       <div 
         className="absolute inset-0 w-full h-full opacity-20"
@@ -130,7 +130,7 @@ export default function AmenitiesFacilitiesSection() {
           </div>
           
           {/* Two Column Layout: Image on Left, Amenities on Right */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-10 2xl:px-10">
             {/* Left Side - Image */}
             <div className={`w-full h-full flex items-center justify-center order-2 lg:order-1 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
               <div className="relative w-full h-[450px] md:h-[550px] lg:h-[650px] rounded-lg overflow-hidden">

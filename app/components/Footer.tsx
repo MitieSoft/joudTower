@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className={`${isRTL ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
+          <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
             <h4 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
               {t.footer.quickLinks}
             </h4>
@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Information */}
-          <div className={`${isRTL ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
+          <div className={`${isRTL ? 'text-right' : 'text-left'}`}>
             <h4 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
               {t.footer.contactUs}
             </h4>
