@@ -47,7 +47,7 @@ export default function RegistrationSection() {
           </h3>
         </div>
         {/* 3 Divs Layout - No Gaps */}
-        <div className=" container mx-auto px-4 sm:px-12 md:px-16 lg:px-20 xl:px-12 2xl:px-24 pb-30" >
+        <div className=" container mx-auto px-4 sm:px-12 md:px-16 lg:px-20 xl:px-11 2xl:px-24 pb-30" >
           <div className="grid grid-cols-1 lg:grid-cols-3 px-4 sm:px-4 md:px-0 lg:px-0">
           
           
