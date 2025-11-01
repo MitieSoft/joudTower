@@ -41,13 +41,13 @@ export default function RegistrationSection() {
             {t.specification.title}
           </h2>
         </div>
-        <div className={`container mx-auto px-4 sm:px-12 md:px-16 lg:px-20 xl:px-24 pt-8 pb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`container mx-auto px-4 px-4 sm:px-12 md:px-16 lg:px-20 xl:px-12 2xl:px-24 pt-8 pb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h3 className={`text-3xl pt-4 sm:text-4xl md:text-5xl font-bold text-[#792f41] mb-4 ${isRTL ? 'text-right' : 'text-left'}`} style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
             {t.specification.totalStoreys}
           </h3>
         </div>
         {/* 3 Divs Layout - No Gaps */}
-        <div className=" container mx-auto px-4 sm:px-12 md:px-16 lg:px-20 xl:px-24  pb-30" >
+        <div className=" container mx-auto px-4 sm:px-12 md:px-16 lg:px-20 xl:px-12 2xl:px-24 pb-30" >
           <div className="grid grid-cols-1 lg:grid-cols-3 px-4 sm:px-4 md:px-0 lg:px-0">
           
           
@@ -72,12 +72,13 @@ export default function RegistrationSection() {
 
           {/* Div 2 - Big Image Covering Whole Div */}
           <div 
-      className={`relative h-[600px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`object-fit relative h-[600px] lg:h-[700px] xl:h-[650px] 2xl:h-[650px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{
         backgroundImage: `url(${arcImage.src})`,
         backgroundSize: '110%',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+       
       }}
     >
           </div>
