@@ -57,7 +57,7 @@ export default function OverviewSection() {
         <div className="mb-12 sm:mb-16 lg:mb-15">
           <div className="space-y-4 sm:space-y-6">
             <div className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 md:gap-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] lg:text-[clamp(2.5rem,7vw,6rem)] xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] sm:whitespace-nowrap`}>
+              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] md:text-[clamp(2.5rem,6vw,5rem)] lg:text-[clamp(2.5rem,7vw,5.5rem)] xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] sm:whitespace-nowrap`}>
                 {t.overview.beyondLimits}
               </h1>
               <p className={`text-[#555555] text-base leading-relaxed max-w-md mt-4 sm:mt-8 hidden md:block ${isRTL ? 'lg:mr-8 text-center sm:text-right' : 'lg:ml-8 lg:mr-32 text-center'}`}>
@@ -68,7 +68,7 @@ export default function OverviewSection() {
               <p className={`text-[#555555] text-base leading-relaxed max-w-md mt-4 sm:mt-8 hidden md:block ${isRTL ? 'lg:mr-8 text-center sm:text-right order-2 sm:order-1' : 'lg:ml-8 lg:mr-32 text-center order-2 sm:order-1'}`}>
                 {t.overview.description2}
               </p>
-              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] lg:text-[clamp(2.5rem,7vw,6rem)] xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] text-right ml-auto order-1 sm:order-2 sm:whitespace-nowrap`}>
+              <h1 className={`text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,10vw,8rem)] md:text-[clamp(2.5rem,6vw,5rem)] lg:text-[clamp(2.5rem,7vw,5.5rem)] xl:text-[clamp(3rem,10vw,8rem)] font-normal leading-[0.95] tracking-tight text-[#792f41] text-right ml-auto order-1 sm:order-2 sm:whitespace-nowrap`}>
                 {t.overview.spaceAwaits}
               </h1>
             </div>

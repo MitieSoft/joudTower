@@ -60,7 +60,7 @@ export default function Header() {
       }`}
     >
       {/* Container for content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-5 lg:py-6 xl:py-7 flex items-center justify-between relative">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-4 lg:py-5 xl:py-5 flex items-center justify-between relative">
         {/* Left - Logo */}
         <div className="flex items-center gap-2 md:gap-3 z-20">
           <button
