@@ -33,20 +33,20 @@ export default function OverviewSection() {
   return (
     <section ref={sectionRef} className="w-full bg-white">
       {/* Top Information Bar */}
-      <div className={`w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className={`flex flex-col sm:flex-row items-center sm:items-center gap-2 ${isRTL ? 'text-center sm:text-right' : 'text-center sm:text-left'}`}>
-          <span className="text-gray-700 text-sm sm:text-base md:text-lg font-medium">
+      <div className={w-full border-b border-gray-200 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-6 sm:py-8 flex flex-row items-center justify-between gap-2 sm:gap-4 bg-white transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}}>
+        <div className={flex flex-row items-center gap-2 flex-shrink-0 ${isRTL ? 'text-right' : 'text-left'}}>
+          <span className="text-gray-700 text-xs sm:text-sm md:text-base lg:text-lg font-medium whitespace-nowrap">
             {t.overview.pricesStartFrom}
           </span>
-          <span className="text-[#792f41] text-lg sm:text-xl md:text-2xl font-bold">
+          <span className="text-[#792f41] text-sm sm:text-lg md:text-xl lg:text-2xl font-bold whitespace-nowrap">
             AED 3,600,000
           </span>
         </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center sm:items-center gap-2 sm:gap-3">
-          <button className="px-3 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full transition-colors whitespace-nowrap">
+        <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-shrink-0">
+          <button className="px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full transition-colors whitespace-nowrap">
             {t.overview.downloadBrochure}
           </button>
-          <button className="px-3 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-white hover:bg-[#9d552d] text-[#9d552d] hover:text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full transition-colors whitespace-nowrap shadow-md">
+          <button className="hidden sm:block px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-white hover:bg-[#9d552d] text-[#9d552d] hover:text-white text-xs sm:text-sm md:text-base lg:text-lg font-medium rounded-full transition-colors whitespace-nowrap shadow-md">
             {t.overview.getFreeConsultation}
           </button>
         </div>
