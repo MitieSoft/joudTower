@@ -60,6 +60,8 @@ interface Translations {
   // Gallery
   gallery: {
     title: string;
+    external: string;
+    internal: string;
   };
   // Floor Plans
   floorPlans: {
@@ -106,6 +108,28 @@ interface Translations {
     bedroom4Garden: string;
     bedroom4Duplex: string;
     penthouse: string;
+  };
+  // Project Facts
+  projectFacts: {
+    title: string;
+    project: string;
+    facts: string;
+    developer: string;
+    developerValue: string;
+    propertyType: string;
+    propertyTypeValue: string;
+    totalStoreys: string;
+    totalStoreysValue: string;
+    areaSize: string;
+    areaSizeValue: string;
+    startingPrices: string;
+    startingPricesValue: string;
+    paymentPlan: string;
+    paymentPlanValue: string;
+    expectedHandover: string;
+    expectedHandoverValue: string;
+    whoCanBuy: string;
+    whoCanBuyValue: string;
   };
 }
 
@@ -159,7 +183,9 @@ const translations: Record<Language, Translations> = {
       getFreeConsultation: 'Get A Free Consultation',
     },
     gallery: {
-      title: 'Media Gallery',
+      title: 'Explore Our Galleries',
+      external: 'External',
+      internal: 'Internal',
     },
     floorPlans: {
       title: 'Floor Plans',
@@ -202,6 +228,27 @@ const translations: Record<Language, Translations> = {
       bedroom4Garden: '4-bedroom + private garden at the podium level',
       bedroom4Duplex: '4-bedroom duplex on the floor from 45 upwards (skyvilla)',
       penthouse: 'Penthouse: 5 bedrooms, bespoke with private pool.',
+    },
+    projectFacts: {
+      title: 'Project Facts',
+      project: 'Project',
+      facts: 'Facts',
+      developer: 'Developer',
+      developerValue: 'Albatha Real Estate',
+      propertyType: 'Property Type',
+      propertyTypeValue: '2-5 BR Apartments & Penthouses',
+      totalStoreys: 'Total Storeys',
+      totalStoreysValue: '55 Storeys',
+      areaSize: 'Area Size',
+      areaSizeValue: 'From 968 Sq. Ft',
+      startingPrices: 'Starting Prices',
+      startingPricesValue: 'AED 3,600,000',
+      paymentPlan: 'Payment Plan',
+      paymentPlanValue: '10% / 55% / 35%',
+      expectedHandover: 'Expected Handover',
+      expectedHandoverValue: 'Under Construction',
+      whoCanBuy: 'WHO CAN BUY',
+      whoCanBuyValue: 'Freehold For All Nationalities',
     },
   },
   ar: {
@@ -254,6 +301,8 @@ const translations: Record<Language, Translations> = {
     },
     gallery: {
       title: 'معرض الوسائط',
+      external: 'خارجي',
+      internal: 'داخلي',
     },
     floorPlans: {
       title: 'المخططات',
@@ -296,6 +345,27 @@ const translations: Record<Language, Translations> = {
       bedroom4Garden: 'شقة بأربع غرف نوم + حديقة خاصة على مستوى المنصة',
       bedroom4Duplex: 'شقة دوبلكس بأربع غرف نوم من الطابق 45 فما فوق (سكاي فيلا)',
       penthouse: 'بنتهاوس: 5 غرف نوم، مخصص مع مسبح خاص.',
+    },
+    projectFacts: {
+      title: 'حقائق المشروع',
+      project: 'المشروع',
+      facts: 'حقائق',
+      developer: 'المطور',
+      developerValue: 'ألبتة العقارية',
+      propertyType: 'نوع العقار',
+      propertyTypeValue: 'شقق 2-5 غرف نوم وبنتهاوس',
+      totalStoreys: 'إجمالي الطوابق',
+      totalStoreysValue: '55 طابق',
+      areaSize: 'حجم المساحة',
+      areaSizeValue: 'من 968 قدم مربع',
+      startingPrices: 'الأسعار البدائية',
+      startingPricesValue: '3,600,000 درهم إماراتي',
+      paymentPlan: 'خطة الدفع',
+      paymentPlanValue: '10% / 55% / 35%',
+      expectedHandover: 'التسليم المتوقع',
+      expectedHandoverValue: 'قيد الإنشاء',
+      whoCanBuy: 'من يمكنه الشراء',
+      whoCanBuyValue: 'ملكية حرة لجميع الجنسيات',
     },
   },
 };
