@@ -184,8 +184,8 @@ const translations: Record<Language, Translations> = {
     },
     gallery: {
       title: 'Explore Our Galleries',
-      external: 'External',
-      internal: 'Internal',
+      external: 'Exterior',
+      internal: 'Interior',
     },
     floorPlans: {
       title: 'Floor Plans',
