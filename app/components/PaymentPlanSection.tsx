@@ -4,6 +4,47 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '../contexts/LanguageContext';
 
+// Main countries with flags and dial codes
+const countries = [
+  { code: '+971', flag: '🇦🇪', name: 'UAE' },
+  { code: '+1', flag: '🇺🇸', name: 'USA' },
+  { code: '+44', flag: '🇬🇧', name: 'UK' },
+  { code: '+966', flag: '🇸🇦', name: 'Saudi Arabia' },
+  { code: '+974', flag: '🇶🇦', name: 'Qatar' },
+  { code: '+965', flag: '🇰🇼', name: 'Kuwait' },
+  { code: '+973', flag: '🇧🇭', name: 'Bahrain' },
+  { code: '+968', flag: '🇴🇲', name: 'Oman' },
+  { code: '+961', flag: '🇱🇧', name: 'Lebanon' },
+  { code: '+962', flag: '🇯🇴', name: 'Jordan' },
+  { code: '+20', flag: '🇪🇬', name: 'Egypt' },
+  { code: '+91', flag: '🇮🇳', name: 'India' },
+  { code: '+92', flag: '🇵🇰', name: 'Pakistan' },
+  { code: '+86', flag: '🇨🇳', name: 'China' },
+  { code: '+81', flag: '🇯🇵', name: 'Japan' },
+  { code: '+82', flag: '🇰🇷', name: 'South Korea' },
+  { code: '+65', flag: '🇸🇬', name: 'Singapore' },
+  { code: '+60', flag: '🇲🇾', name: 'Malaysia' },
+  { code: '+61', flag: '🇦🇺', name: 'Australia' },
+  { code: '+64', flag: '🇳🇿', name: 'New Zealand' },
+  { code: '+27', flag: '🇿🇦', name: 'South Africa' },
+  { code: '+33', flag: '🇫🇷', name: 'France' },
+  { code: '+49', flag: '🇩🇪', name: 'Germany' },
+  { code: '+39', flag: '🇮🇹', name: 'Italy' },
+  { code: '+34', flag: '🇪🇸', name: 'Spain' },
+  { code: '+31', flag: '🇳🇱', name: 'Netherlands' },
+  { code: '+32', flag: '🇧🇪', name: 'Belgium' },
+  { code: '+41', flag: '🇨🇭', name: 'Switzerland' },
+  { code: '+46', flag: '🇸🇪', name: 'Sweden' },
+  { code: '+47', flag: '🇳🇴', name: 'Norway' },
+  { code: '+351', flag: '🇵🇹', name: 'Portugal' },
+  { code: '+90', flag: '🇹🇷', name: 'Turkey' },
+  { code: '+7', flag: '🇷🇺', name: 'Russia' },
+  { code: '+55', flag: '🇧🇷', name: 'Brazil' },
+  { code: '+52', flag: '🇲🇽', name: 'Mexico' },
+  { code: '+54', flag: '🇦🇷', name: 'Argentina' },
+  { code: '+1', flag: '🇨🇦', name: 'Canada' },
+];
+
 export default function PaymentPlanSection() {
   const { t, isRTL } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
@@ -11,10 +52,13 @@ export default function PaymentPlanSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    countryCode: '+971'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
+  const countryDropdownRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -37,6 +81,30 @@ export default function PaymentPlanSection() {
       }
     };
   }, []);
+
+  // Close country dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
+        setIsCountryDropdownOpen(false);
+      }
+    };
+
+    if (isCountryDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isCountryDropdownOpen]);
+
+  const selectedCountry = countries.find(c => c.code === formData.countryCode) || countries[0];
+
+  const handleCountrySelect = (code: string) => {
+    setFormData({ ...formData, countryCode: code });
+    setIsCountryDropdownOpen(false);
+  };
   
   return (
     <section ref={sectionRef} className="w-full bg-white pb-12 md:pb-16 lg:pb-20">
@@ -171,9 +239,10 @@ export default function PaymentPlanSection() {
                         'Content-Type': 'application/json',
                       },
                       body: JSON.stringify({
-                        ...formData,
+                        name: formData.name,
+                        email: formData.email,
+                        phone: `${formData.countryCode}${formData.phone}`,
                         formType: 'payment-plan',
-                        countryCode: '+971',
                       }),
                     });
 
@@ -181,7 +250,7 @@ export default function PaymentPlanSection() {
 
                     if (response.ok) {
                       setSubmitMessage({ type: 'success', text: data.message || 'Form submitted successfully!' });
-                      setFormData({ name: '', email: '', phone: '' });
+                      setFormData({ name: '', email: '', phone: '', countryCode: '+971' });
                       setTimeout(() => {
                         setIsModalOpen(false);
                         setSubmitMessage(null);
@@ -229,30 +298,54 @@ export default function PaymentPlanSection() {
                   />
                 </div>
 
-                {/* Phone Number Field with UAE Flag and animation */}
+                {/* Phone Number Field with Country Code Picker */}
                 <div className="relative animate-slideInLeft" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
                   <label className="block text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
                     Phone Number
                   </label>
                   <div className="relative">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 z-10 pointer-events-none">
-                      {/* UAE Flag Icon - Horizontal stripes */}
-                      <div className="w-6 h-4 flex flex-col rounded-sm overflow-hidden border border-gray-300 shadow-sm">
-                        <div className="h-1/4 bg-red-600"></div>
-                        <div className="h-1/4 bg-green-600"></div>
-                        <div className="h-1/4 bg-white"></div>
-                        <div className="h-1/4 bg-black"></div>
-                      </div>
-                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                    {/* Country Code Selector */}
+                    <div ref={countryDropdownRef} className="absolute left-4 top-1/2 -translate-y-1/2 z-20">
+                      <button
+                        type="button"
+                        onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                        className="flex items-center gap-2 px-2 py-1.5 bg-transparent hover:bg-gray-50 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#792f41]/30"
+                      >
+                        <span className="text-xl">{selectedCountry.flag}</span>
+                        <span className="text-sm font-medium text-gray-700">{selectedCountry.code}</span>
+                        <svg className={`w-4 h-4 text-gray-400 transition-transform ${isCountryDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      
+                      {/* Country Dropdown */}
+                      {isCountryDropdownOpen && (
+                        <div className="absolute top-full left-0 mt-1 w-64 max-h-60 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                          <div className="py-1">
+                            {countries.map((country) => (
+                              <button
+                                key={country.code}
+                                type="button"
+                                onClick={() => handleCountrySelect(country.code)}
+                                className={`w-full px-4 py-2 text-left hover:bg-gray-100 transition-colors flex items-center gap-3 ${
+                                  formData.countryCode === country.code ? 'bg-[#792f41]/10' : ''
+                                }`}
+                              >
+                                <span className="text-xl">{country.flag}</span>
+                                <span className="text-sm font-medium text-gray-700 flex-1">{country.code}</span>
+                                <span className="text-xs text-gray-500">{country.name}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                     <input
                       type="tel"
                       placeholder="Enter your phone number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-20 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#792f41]/30 focus:border-[#792f41] transition-all duration-300 text-base bg-gray-50 hover:bg-white hover:border-gray-300"
+                      className="w-full pl-28 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#792f41]/30 focus:border-[#792f41] transition-all duration-300 text-base bg-gray-50 hover:bg-white hover:border-gray-300"
                       style={{ fontFamily: 'Univers, Arial, sans-serif' }}
                       required
                     />

@@ -4,9 +4,49 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '../contexts/LanguageContext';
 
+// Main countries with flags and dial codes
+const countries = [
+  { code: '+971', flag: '🇦🇪', name: 'UAE' },
+  { code: '+1', flag: '🇺🇸', name: 'USA' },
+  { code: '+44', flag: '🇬🇧', name: 'UK' },
+  { code: '+966', flag: '🇸🇦', name: 'Saudi Arabia' },
+  { code: '+974', flag: '🇶🇦', name: 'Qatar' },
+  { code: '+965', flag: '🇰🇼', name: 'Kuwait' },
+  { code: '+973', flag: '🇧🇭', name: 'Bahrain' },
+  { code: '+968', flag: '🇴🇲', name: 'Oman' },
+  { code: '+961', flag: '🇱🇧', name: 'Lebanon' },
+  { code: '+962', flag: '🇯🇴', name: 'Jordan' },
+  { code: '+20', flag: '🇪🇬', name: 'Egypt' },
+  { code: '+91', flag: '🇮🇳', name: 'India' },
+  { code: '+92', flag: '🇵🇰', name: 'Pakistan' },
+  { code: '+86', flag: '🇨🇳', name: 'China' },
+  { code: '+81', flag: '🇯🇵', name: 'Japan' },
+  { code: '+82', flag: '🇰🇷', name: 'South Korea' },
+  { code: '+65', flag: '🇸🇬', name: 'Singapore' },
+  { code: '+60', flag: '🇲🇾', name: 'Malaysia' },
+  { code: '+61', flag: '🇦🇺', name: 'Australia' },
+  { code: '+64', flag: '🇳🇿', name: 'New Zealand' },
+  { code: '+27', flag: '🇿🇦', name: 'South Africa' },
+  { code: '+33', flag: '🇫🇷', name: 'France' },
+  { code: '+49', flag: '🇩🇪', name: 'Germany' },
+  { code: '+39', flag: '🇮🇹', name: 'Italy' },
+  { code: '+34', flag: '🇪🇸', name: 'Spain' },
+  { code: '+31', flag: '🇳🇱', name: 'Netherlands' },
+  { code: '+32', flag: '🇧🇪', name: 'Belgium' },
+  { code: '+41', flag: '🇨🇭', name: 'Switzerland' },
+  { code: '+46', flag: '🇸🇪', name: 'Sweden' },
+  { code: '+47', flag: '🇳🇴', name: 'Norway' },
+  { code: '+351', flag: '🇵🇹', name: 'Portugal' },
+  { code: '+90', flag: '🇹🇷', name: 'Turkey' },
+  { code: '+7', flag: '🇷🇺', name: 'Russia' },
+  { code: '+55', flag: '🇧🇷', name: 'Brazil' },
+  { code: '+52', flag: '🇲🇽', name: 'Mexico' },
+  { code: '+54', flag: '🇦🇷', name: 'Argentina' },
+  { code: '+1', flag: '🇨🇦', name: 'Canada' },
+];
+
 export default function ContactSection() {
   const { t, isRTL } = useLanguage();
-  const countryCodeSelectRef = useRef<HTMLSelectElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
@@ -17,6 +57,8 @@ export default function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
+  const countryDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +81,30 @@ export default function ContactSection() {
     };
   }, []);
 
+  // Close country dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
+        setIsCountryDropdownOpen(false);
+      }
+    };
+
+    if (isCountryDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isCountryDropdownOpen]);
+
+  const selectedCountry = countries.find(c => c.code === formData.countryCode) || countries[0];
+
+  const handleCountrySelect = (code: string) => {
+    setFormData({ ...formData, countryCode: code });
+    setIsCountryDropdownOpen(false);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -51,7 +117,9 @@ export default function ContactSection() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...formData,
+          name: formData.name,
+          email: formData.email,
+          phone: `${formData.countryCode}${formData.phone}`,
           formType: 'contact',
         }),
       });
@@ -74,7 +142,7 @@ export default function ContactSection() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -143,42 +211,42 @@ export default function ContactSection() {
                 />
               </div>
 
-              {/* Phone Number Field */}
+              {/* Phone Number Field with Country Code Picker */}
               <div className="relative">
-                <div className={`absolute ${isRTL ? 'right-2' : 'left-2'} top-1/2 -translate-y-1/2 flex items-center gap-1.5 z-10`}>
-                  {/* UAE Flag Icon */}
-                  <svg
-                    className="w-5 h-5 flex-shrink-0 "
-                    viewBox="0 0 6 4"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{ border: '1px solid rgba(0,0,0,0.1)' }}
+                <div ref={countryDropdownRef} className={`absolute ${isRTL ? 'right-2' : 'left-2'} top-1/2 -translate-y-1/2 z-20`}>
+                  <button
+                    type="button"
+                    onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                    className="flex items-center gap-1.5 px-2 py-1 bg-transparent hover:bg-gray-50 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-[#792f41]/30"
                   >
-                    {/* Vertical red stripe on left */}
-                    <rect width="1" height="4" fill="#FF0000" />
-                    {/* Horizontal green stripe */}
-                    <rect x="1" width="5" height="1.333" fill="#009639" />
-                    {/* Horizontal white stripe */}
-                    <rect x="1" y="1.333" width="5" height="1.333" fill="#FFFFFF" />
-                    {/* Horizontal black stripe */}
-                    <rect x="1" y="2.667" width="5" height="1.333" fill="#000000" />
-                  </svg>
-                  <select
-                    ref={countryCodeSelectRef}
-                    name="countryCode"
-                    value={formData.countryCode}
-                    onChange={handleChange}
-                    className="bg-transparent text-gray-800 text-xs md:text-sm font-semibold focus:outline-none cursor-pointer appearance-none border-none focus:ring-0  hover:text-[#792f41] transition-colors"
-                    style={{
-                      backgroundImage: 'none',
-                    }}
-                  >
-                    <option value="+971">+971</option>
-                    <option value="+1">+1</option>
-                    <option value="+44">+44</option>
-                    <option value="+966">+966</option>
-                  </select>
+                    <span className="text-lg">{selectedCountry.flag}</span>
+                    <span className="text-xs md:text-sm font-medium text-gray-700">{selectedCountry.code}</span>
+                    <svg className={`w-3 h-3 text-gray-400 transition-transform ${isCountryDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
                   
+                  {/* Country Dropdown */}
+                  {isCountryDropdownOpen && (
+                    <div className={`absolute top-full ${isRTL ? 'right-0' : 'left-0'} mt-1 w-64 max-h-60 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg z-50`}>
+                      <div className="py-1">
+                        {countries.map((country) => (
+                          <button
+                            key={country.code}
+                            type="button"
+                            onClick={() => handleCountrySelect(country.code)}
+                            className={`w-full px-4 py-2 text-left hover:bg-gray-100 transition-colors flex items-center gap-3 ${
+                              formData.countryCode === country.code ? 'bg-[#792f41]/10' : ''
+                            }`}
+                          >
+                            <span className="text-xl">{country.flag}</span>
+                            <span className="text-sm font-medium text-gray-700 flex-1">{country.code}</span>
+                            <span className="text-xs text-gray-500">{country.name}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <input
                   type="tel"
@@ -186,7 +254,7 @@ export default function ContactSection() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2.5 ${isRTL ? 'pr-20' : 'pl-20'} bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#792f41] focus:border-transparent text-gray-800 placeholder-gray-400 text-sm md:text-base transition-all`}
+                  className={`w-full px-4 py-2.5 ${isRTL ? 'pr-28' : 'pl-28'} bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#792f41] focus:border-transparent text-gray-800 placeholder-gray-400 text-sm md:text-base transition-all`}
                   placeholder={t.contact.phoneNumber}
                 />
               </div>

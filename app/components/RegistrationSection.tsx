@@ -63,7 +63,7 @@ export default function RegistrationSection() {
               </div>
             </div>
 
-             <div className={`relative w-full h-80 mt-auto ${isRTL ? '-left-20' : '-right-20'} -bottom-20 z-20 hidden lg:block`}>
+             <div className={`relative w-full lg:h-52 xl:h-64 2xl:h-64 mt-auto ${isRTL ? '-left-16' : '-right-16'} -bottom-20 lg:-bottom-4 xl:-bottom-20 2xl:-bottom-20 z-20 hidden lg:block`}>
                <Image
                  src={image2.src}
                  alt="Joud Tower interior view"
@@ -88,7 +88,7 @@ export default function RegistrationSection() {
 
           {/* Div 3 - Image + Apartment List */}
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100' : isRTL ? 'opacity-0 -translate-x-10' : 'opacity-0 translate-x-10'}`}>
-             <div className={`relative w-full h-64 mb-8 ${isRTL ? '-right-20' : '-left-20'} -top-20 lg:-top-12  xl:-top-18 2xl:-top-20 z-20 hidden lg:block`}>
+             <div className={`relative w-full h-64 lg:h-52 xl:h-64 2xl:h-64 mb-8 ${isRTL ? '-right-20' : '-left-20'} -top-20 lg:-top-2  xl:-top-18 2xl:-top-20 z-20 hidden lg:block`}>
                <Image
                  src={image5.src}
                  alt="Joud Tower curved exterior"
@@ -100,27 +100,27 @@ export default function RegistrationSection() {
             <div className={`space-y-2 text-md text-black leading-relaxed pt-4 sm:pt-4 md:pt-0 lg:pt-0 ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-8 lg:pl-8'}`}>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
-                {t.specification.bedroom2}
+                {t.specification.bedroom2}.
               </p>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
-                {t.specification.bedroom3}
+                {t.specification.bedroom3}.
               </p>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
-                {t.specification.bedroom3Garden}
+                {t.specification.bedroom3Garden}.
               </p>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
-                {t.specification.bedroom4}
+                {t.specification.bedroom4}.
               </p>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
-                {t.specification.bedroom4Garden}
+                {t.specification.bedroom4Garden}.
               </p>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
-                {t.specification.bedroom4Duplex}
+                {t.specification.bedroom4Duplex}.
               </p>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
