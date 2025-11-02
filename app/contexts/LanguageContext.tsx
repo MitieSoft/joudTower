@@ -183,7 +183,7 @@ const translations: Record<Language, Translations> = {
       getFreeConsultation: 'Get A Free Consultation',
     },
     gallery: {
-      title: 'Explore Our Galleries',
+      title: 'Discover Joud',
       external: 'Exterior',
       internal: 'Interior',
     },
