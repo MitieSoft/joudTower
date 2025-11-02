@@ -78,7 +78,7 @@ export default function RegistrationSection() {
       className={`object-fit relative h-[600px] lg:h-[700px] xl:h-[650px] 2xl:h-[650px] transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{
         backgroundImage: `url(${arcImage.src})`,
-        backgroundSize: '120%',
+        backgroundSize: '110%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
        
