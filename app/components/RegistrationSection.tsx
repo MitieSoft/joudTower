@@ -88,7 +88,7 @@ export default function RegistrationSection() {
 
           {/* Div 3 - Image + Apartment List */}
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100' : isRTL ? 'opacity-0 -translate-x-10' : 'opacity-0 translate-x-10'}`}>
-             <div className={`relative w-full h-64 lg:h-52 xl:h-64 2xl:h-64 mb-8 ${isRTL ? '-right-20' : '-left-20'} -top-20 lg:-top-2  xl:-top-18 2xl:-top-20 z-20 hidden lg:block`}>
+             <div className={`relative w-full h-64 lg:h-60 xl:h-64 2xl:h-64 mb-8 ${isRTL ? '-right-20' : '-left-20'} -top-20 lg:-top-2  xl:-top-18 2xl:-top-20 z-20 hidden lg:block`}>
                <Image
                  src={image5.src}
                  alt="Joud Tower curved exterior"
@@ -97,7 +97,7 @@ export default function RegistrationSection() {
                />
              </div>
 
-            <div className={`space-y-2 text-md lg:text-sm xl:text-base 2xl:text-xl text-black leading-relaxed pt-4 sm:pt-4 md:pt-12 lg:pt-24 xl:pt-8 2xl:pt-6   ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-2 lg:pl-2'}`}>
+            <div className={`space-y-2 text-md lg:text-sm xl:text-base 2xl:text-xl text-black leading-relaxed pt-4 sm:pt-4 md:pt-12 lg:pt-24 xl:pt-10 2xl:pt-8   ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-2 lg:pl-2'}`}>
               <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom2}.

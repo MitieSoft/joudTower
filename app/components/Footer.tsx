@@ -45,8 +45,8 @@ export default function Footer() {
   return (
     <footer className="bg-[#792f41] text-white">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 sm:px-12 md:px-16 lg:px-20 xl:px-24 py-12 sm:py-16 md:py-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-8">
+      <div className="container mx-auto px-4 sm:px-12 md:px-16 lg:px-2 xl:px-16 2xl:px-24 py-12 sm:py-16 md:py-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-8">
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className={`mb-6 sm:mb-8 ${isRTL ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
