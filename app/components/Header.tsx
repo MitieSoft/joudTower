@@ -83,7 +83,7 @@ export default function Header() {
       }`}
     >
       {/* Container for content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-2 sm:py-3 md:py-3 lg:py-4 2xl:py-6 flex items-center justify-between relative">
+      <div className="container mx-auto px-4 md:px-6 lg:px-2 xl:px-12 2xl:px-24 py-2 sm:py-3 md:py-3 lg:py-4 2xl:py-4 flex items-center justify-between relative">
         {/* Left - Logo */}
         <div className="flex items-center gap-2 md:gap-3 z-20">
           <button
@@ -103,39 +103,39 @@ export default function Header() {
         </div>
 
         {/* Center - Navigation Links (Desktop) */}
-        <nav className={`absolute ${isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'} hidden lg:flex items-center gap-8 2xl:gap-12`}>
+        <nav className={`absolute ${isRTL ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'} hidden lg:flex items-center flex-nowrap gap-4 lg:gap-6 xl:gap-6 2xl:gap-8`}>
           <a
             href="#overview"
             onClick={(e) => handleNavClick(e, '#overview')}
-            className="text-white text-base md:text-base lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
+            className="text-white text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium hover:opacity-80 transition-opacity cursor-pointer whitespace-nowrap"
           >
             {t.header.overview}
           </a>
           <a
             href="#floor-plans"
             onClick={(e) => handleNavClick(e, '#floor-plans')}
-            className="text-white text-base  md:text-base lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
+            className="text-white text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium hover:opacity-80 transition-opacity cursor-pointer whitespace-nowrap"
           >
             {t.header.floorPlans}
           </a>
           <a
             href="#pricing"
             onClick={(e) => handleNavClick(e, '#pricing')}
-            className="text-white text-base  md:text-lg lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
+            className="text-white text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium hover:opacity-80 transition-opacity cursor-pointer whitespace-nowrap"
           >
             {t.header.pricing}
           </a>
           <a
             href="#gallery"
             onClick={(e) => handleNavClick(e, '#gallery')}
-            className="text-white text-base md:text-lg lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
+            className="text-white text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium hover:opacity-80 transition-opacity cursor-pointer whitespace-nowrap"
           >
             {t.header.gallery}
           </a>
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-white text-base md:text-lg lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
+            className="text-white text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium hover:opacity-80 transition-opacity cursor-pointer whitespace-nowrap"
           >
             {t.header.contactUs}
           </a>
@@ -143,7 +143,7 @@ export default function Header() {
             href="https://albatha.vercel.app/"
             
             rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity cursor-pointer"
+            className="hover:opacity-80 transition-opacity cursor-pointer flex-shrink-0"
             aria-label="Visit Albatha Real Estate"
           >
             <Image
@@ -151,7 +151,7 @@ export default function Header() {
               alt="Albatha Real Estate Logo"
               width={100}
               height={40}
-              className="h-6 sm:h-7 md:h-8 lg:h-9 w-auto object-contain"
+              className="h-6 sm:h-7 md:h-6 lg:h-7 xl:h-8 2xl:h-9 w-auto object-contain"
               priority
             />
           </a>

@@ -97,7 +97,7 @@ export default function RegistrationSection() {
                />
              </div>
 
-            <div className={`space-y-2 text-md text-black leading-relaxed pt-4 sm:pt-4 md:pt-0 lg:pt-0 ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-8 lg:pl-8'}`}>
+            <div className={`space-y-2 text-md text-black leading-relaxed pt-4 sm:pt-4 md:pt-6 lg:pt-8 ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-2 lg:pl-2'}`}>
               <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom2}.
