@@ -44,7 +44,7 @@ export default function RegistrationSection() {
             {t.specification.title}
           </h2>
         </div>
-        <div className={`container mx-auto px-4 px-4 sm:px-12 md:px-2 lg:px-2 xl:px-12 2xl:px-24 pt-8 pb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`container mx-auto px-4 px-4 sm:px-12 md:px-2 lg:px-0 xl:px-10 2xl:px-22 pt-8 pb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h3 className={`text-3xl pt-4 sm:text-4xl md:text-5xl font-bold text-[#792f41] mb-4 ${isRTL ? 'text-right' : 'text-left'}`} style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
             {t.specification.totalStoreys}
           </h3>
@@ -97,32 +97,32 @@ export default function RegistrationSection() {
                />
              </div>
 
-            <div className={`space-y-2 text-md text-black leading-relaxed pt-4 sm:pt-4 md:pt-6 lg:pt-8 ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-2 lg:pl-2'}`}>
-              <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
+            <div className={`space-y-2 text-md lg:text-sm xl:text-base 2xl:text-xl text-black leading-relaxed pt-4 sm:pt-4 md:pt-12 lg:pt-24 xl:pt-8 2xl:pt-6   ${isRTL ? 'text-right pr-2 sm:pr-2 md:pr-8 lg:pr-8' : 'text-left pl-2 sm:pl-2 md:pl-2 lg:pl-2'}`}>
+              <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom2}.
               </p>
-              <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
+              <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom3}.
               </p>
-              <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
+              <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom3Garden}.
               </p>
-              <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
+              <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom4}.
               </p>
-              <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
+              <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom4Garden}.
               </p>
-              <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
+              <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.bedroom4Duplex}.
               </p>
-              <p className="m-0" dir={isRTL ? 'rtl' : 'ltr'}>
+              <p className="m-0 whitespace-nowrap" dir={isRTL ? 'rtl' : 'ltr'}>
                 <span className={isRTL ? 'ml-2' : 'mr-2'}>•</span>
                 {t.specification.penthouse}
               </p>
