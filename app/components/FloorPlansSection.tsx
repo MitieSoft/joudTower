@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import floorPlan1 from '../assets/images/FloorPlan/A-13-(1)_LR.jpg';
 import floorPlan2 from '../assets/images/FloorPlan/A-30_LR.jpg';
@@ -17,49 +17,49 @@ export default function FloorPlansSection() {
   const floorPlans = [
     {
       id: 'a13',
-      label: 'A-13',
+      label: '3 BR -Type A13',
       image: floorPlan1,
       alt: 'Floor Plan A-13',
     },
     {
       id: 'a30',
-      label: 'A-30',
+      label: 'Duplex -Type A30',
       image: floorPlan2,
       alt: 'Floor Plan A-30',
     },
     {
       id: 'a6',
-      label: 'A6',
+      label: '4 BR -Type A6',
       image: floorPlan3,
       alt: 'Floor Plan A6',
     },
     {
       id: 'a9',
-      label: 'A9',
+      label: '3 BR -Type A9',
       image: floorPlan4,
       alt: 'Floor Plan A9',
     },
     {
       id: 'b10',
-      label: 'B10',
+      label: '2 BR -Type B10',
       image: floorPlan5,
       alt: 'Floor Plan B10',
     },
     {
       id: 'b11',
-      label: 'B11',
+      label: '2 BR -Type B11',
       image: floorPlan6,
       alt: 'Floor Plan B11',
     },
     {
       id: 'b4',
-      label: 'B4',
+      label: '3 BR -Type B4',
       image: floorPlan7,
       alt: 'Floor Plan B4',
     },
     {
       id: 'b9',
-      label: 'B9',
+      label: '2 BR -Type B9',
       image: floorPlan8,
       alt: 'Floor Plan B9',
     },
@@ -67,13 +67,41 @@ export default function FloorPlansSection() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const activePlan = floorPlans[currentIndex];
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Function to move to next slide (internal, doesn't reset timer)
+  const moveToNext = () => {
+    setCurrentIndex((prev) => (prev === floorPlans.length - 1 ? 0 : prev + 1));
+  };
+
+  // Function to reset auto-play timer
+  const resetAutoPlay = () => {
+    // Clear existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    // Start new interval with 8 seconds
+    intervalRef.current = setInterval(() => {
+      moveToNext();
+    }, 8000); // 8 seconds (8000ms)
+  };
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? floorPlans.length - 1 : prev - 1));
+    // Reset auto-play timer when manually clicking previous
+    resetAutoPlay();
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === floorPlans.length - 1 ? 0 : prev + 1));
+    moveToNext();
+    // Reset auto-play timer when manually clicking next
+    resetAutoPlay();
+  };
+
+  const handlePlanSelect = (index: number) => {
+    setCurrentIndex(index);
+    // Reset auto-play timer when selecting a plan
+    resetAutoPlay();
   };
 
   const handleDownload = () => {
@@ -84,11 +112,23 @@ export default function FloorPlansSection() {
 
   // Autoplay functionality
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev === floorPlans.length - 1 ? 0 : prev + 1));
-    }, 5000); // Change slide every 5 seconds
+    // Clear existing interval before starting new one
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
+    // Start auto-play using moveToNext to avoid circular dependency
+    intervalRef.current = setInterval(() => {
+      moveToNext();
+    }, 8000); // 8 seconds (8000ms)
 
-    return () => clearInterval(interval);
+    // Cleanup on unmount or when gallery changes
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
   }, [floorPlans.length]);
 
   return (
@@ -102,12 +142,12 @@ export default function FloorPlansSection() {
         </div>
 
         {/* Floor Plan Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 md:mb-12 px-2">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-3 mb-6 sm:mb-8 md:mb-12 px-2">
           {floorPlans.map((plan, index) => (
             <button
               key={plan.id}
-              onClick={() => setCurrentIndex(index)}
-              className={`px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-lg md:rounded-xl text-xs sm:text-sm md:text-base font-medium transition-colors touch-manipulation ${
+              onClick={() => handlePlanSelect(index)}
+              className={`px-3 sm:px-4 md:px-4 lg:px-3 xl:px-4 2xl:px-4 py-1.5 sm:py-2 md:py-3 rounded-lg md:rounded-xl text-xs sm:text-sm md:text-xm lg:text-sm 2xl:text-sm font-medium transition-colors touch-manipulation ${
                 index === currentIndex
                   ? 'bg-[#792f41] text-white border-2 border-[#792f41]'
                   : 'bg-[#8a4a26] text-white border-2 border-transparent hover:bg-[#9d552d] active:bg-[#9d552d]'
@@ -205,7 +245,7 @@ export default function FloorPlansSection() {
           {floorPlans.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => handlePlanSelect(index)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 index === currentIndex ? 'bg-amber-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
               }`}
