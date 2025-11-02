@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import logoWhite from '../assets/images/Logos/logo_white.png';
+import albathaLogo from '../assets/images/Logos/albatha-final-logo.png';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Header() {
@@ -137,6 +138,22 @@ export default function Header() {
             className="text-white text-base md:text-lg lg:text-sm xl:text-base 2xl:text-xl font-medium hover:opacity-80 transition-opacity cursor-pointer"
           >
             {t.header.contactUs}
+          </a>
+          <a
+            href="https://albatha.vercel.app/"
+            
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity cursor-pointer"
+            aria-label="Visit Albatha Real Estate"
+          >
+            <Image
+              src={albathaLogo}
+              alt="Albatha Real Estate Logo"
+              width={100}
+              height={40}
+              className="h-6 sm:h-7 md:h-8 lg:h-9 w-auto object-contain"
+              priority
+            />
           </a>
         </nav>
 
