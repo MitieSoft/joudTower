@@ -145,7 +145,7 @@ const translations: Record<Language, Translations> = {
     hero: {
       title: 'JOUD TOWER',
       subtitle: 'A Dream Designed For You',
-      description: 'Apartments, Penthouse &nbsp;|&nbsp; 1- 4 Bedrooms &nbsp;|&nbsp; Abu Dhabi ',
+      description: 'Apartments, Penthouse &nbsp;|&nbsp; 1- 4 Bedrooms &nbsp;|&nbsp; Sharjah ',
     },
     overview: {
       pricesStartFrom: 'Prices Starts From',
