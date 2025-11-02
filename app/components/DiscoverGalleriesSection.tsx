@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import img1 from '../assets/images/1.jpg';
 import img2 from '../assets/images/2.jpg';
 import joudTower from '../assets/images/Joud-Tower.png';
 import img5 from '../assets/images/5.png';
 import img7 from '../assets/images/7.png';
-import img23 from '../assets/images/23.png';
+import img16 from '../assets/images/16.jpeg';
 import img6 from '../assets/images/6.png';
 import img9 from '../assets/images/9.png';
 import img11 from '../assets/images/11.png';
@@ -33,8 +33,7 @@ export default function DiscoverGalleriesSection() {
   const internalImages = [
     img11.src,
     img2.src,
-    img1.src,
-    img23.src,
+    img16.src,
     img12.src,
     img15.src,
     img9.src,
@@ -45,6 +44,7 @@ export default function DiscoverGalleriesSection() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   
   // Reset index when tab changes
   useEffect(() => {
@@ -72,7 +72,8 @@ export default function DiscoverGalleriesSection() {
     setIsClient(true);
   }, []);
 
-  const nextImage = () => {
+  // Function to move to next image (internal, doesn't reset timer)
+  const moveToNext = () => {
     if (allGalleryImages.length === 0) return;
     setCurrentIndex((prev) => {
       // Allow sliding smoothly to the duplicate images at the end
@@ -80,6 +81,24 @@ export default function DiscoverGalleriesSection() {
       // Wrap around if we exceed the array length
       return newIndex >= allGalleryImages.length ? 0 : newIndex;
     });
+  };
+
+  // Function to reset auto-play timer
+  const resetAutoPlay = () => {
+    // Clear existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    // Start new interval
+    intervalRef.current = setInterval(() => {
+      moveToNext();
+    }, 5000);
+  };
+
+  const nextImage = () => {
+    moveToNext();
+    // Reset auto-play timer when manually clicking next
+    resetAutoPlay();
   };
 
   const prevImage = () => {
@@ -94,6 +113,8 @@ export default function DiscoverGalleriesSection() {
       }
       return prev - 1;
     });
+    // Reset auto-play timer when manually clicking prev
+    resetAutoPlay();
   };
 
   // Handle seamless reset after smoothly showing duplicate images at the end
@@ -112,6 +133,8 @@ export default function DiscoverGalleriesSection() {
 
   const goToImage = (index: number) => {
     setCurrentIndex(index);
+    // Reset auto-play timer when manually clicking pagination dots
+    resetAutoPlay();
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -139,11 +162,23 @@ export default function DiscoverGalleriesSection() {
 
   // Auto-play functionality
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextImage();
+    // Clear existing interval before starting new one
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
+    // Start auto-play using moveToNext to avoid circular dependency
+    intervalRef.current = setInterval(() => {
+      moveToNext();
     }, 5000);
 
-    return () => clearInterval(interval);
+    // Cleanup on unmount or when gallery changes
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
   }, [allGalleryImages.length]); // Reset when gallery changes
 
   // Function to get the visible images (2 for desktop, 1 for mobile)
