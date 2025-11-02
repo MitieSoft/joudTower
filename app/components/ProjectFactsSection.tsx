@@ -33,28 +33,36 @@ export default function ProjectFactsSection() {
 
   const facts = [
     {
-      label: 'Property Type',
-      value: '2-5 BR Apartments & Penthouses',
+      label: t.projectFacts.developer,
+      value: t.projectFacts.developerValue,
     },
     {
-      label: 'Starting Prices',
-      value: 'AED 3,600,000',
+      label: t.projectFacts.propertyType,
+      value: t.projectFacts.propertyTypeValue,
     },
     {
-      label: 'Payment Plan',
-      value: '10% / 55% / 35%',
+      label: t.projectFacts.totalStoreys,
+      value: t.projectFacts.totalStoreysValue,
     },
     {
-      label: 'Developer',
-      value: 'Albatha Real Estate',
+      label: t.projectFacts.areaSize,
+      value: t.projectFacts.areaSizeValue,
     },
     {
-      label: 'Total Storeys',
-      value: '55 Storeys',
+      label: t.projectFacts.startingPrices,
+      value: t.projectFacts.startingPricesValue,
     },
     {
-      label: 'WHO CAN BUY',
-      value: 'Freehold For All Nationalities',
+      label: t.projectFacts.paymentPlan,
+      value: t.projectFacts.paymentPlanValue,
+    },
+    {
+      label: t.projectFacts.expectedHandover,
+      value: t.projectFacts.expectedHandoverValue,
+    },
+    {
+      label: t.projectFacts.whoCanBuy,
+      value: t.projectFacts.whoCanBuyValue,
     },
   ];
 
@@ -64,7 +72,7 @@ export default function ProjectFactsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left Column - Joud Tower Image */}
           <div className={`w-full order-2 lg:order-1 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <div className="relative w-full h-[600px] md:h-[700px] lg:h-[790px] rounded-3xl overflow-hidden shadow-lg">
+            <div className="relative w-full h-[600px] md:h-[850px] lg:h-[850px] rounded-3xl overflow-hidden shadow-lg">
               <Image
                 src={heroImage1}
                 alt="Joud Tower"
@@ -77,22 +85,22 @@ export default function ProjectFactsSection() {
 
           {/* Right Column - Project Facts */}
           <div className={`w-full order-1 lg:order-2 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-10" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
-              <span className="text-[#792f41]">Project</span>{' '}
-              <span className="text-[#792f41]">Facts</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-6" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
+              <span className="text-[#792f41]">{t.projectFacts.project}</span>{' '}
+              <span className="text-[#792f41]">{t.projectFacts.facts}</span>
             </h2>
 
             <div className="space-y-4 md:space-y-5">
               {facts.map((fact, index) => (
                 <div
                   key={index}
-                  className={`bg-white rounded-2xl p-4 md:p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-[#792f41]/20 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                  className={`bg-[#cbcdc9] rounded-2xl p-4 md:p-3 md:px-5 shadow-md hover:shadow-lg transition-all duration-300 border border-[#792f41]/20 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                   style={{ transitionDelay: `${300 + index * 50}ms`, fontFamily: 'Univers, Arial, sans-serif' }}
                 >
-                  <div className="text-xs md:text-sm font-semibold text-[#9d552d] uppercase tracking-wide mb-1 md:mb-2">
+                  <div className="text-xs md:text-sm font-semibold text-[#9d552d] uppercase tracking-wide mb-1 md:mb-1">
                     {fact.label}
                   </div>
-                  <div className="text-base md:text-lg font-bold text-[#792f41]">
+                  <div className="text-base md:text-xl font-bold text-[#792f41]">
                     {fact.value}
                   </div>
                 </div>

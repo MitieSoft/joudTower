@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
+import logoWhite from '../assets/images/Logos/logo_white.png';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Footer() {
@@ -49,11 +51,18 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className={`mb-6 sm:mb-8 ${isRTL ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
               <div className="mb-4">
-                <div className="text-white font-bold text-2xl sm:text-3xl mb-2">
-                  {isRTL ? 'برج الجود' : 'Joud Tower'}
+                <div className="relative h-10 sm:h-12 md:h-14 lg:h-16 w-auto mx-auto md:mx-0 inline-block">
+                  <Image
+                    src={logoWhite}
+                    alt="Joud Tower Logo"
+                    width={200}
+                    height={80}
+                    className="h-full w-auto object-contain"
+                    priority
+                  />
                 </div>
               </div>
-              <p className="text-gray-300 leading-relaxed max-w-md mx-auto md:mx-0 text-sm sm:text-base" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
+              <p className="text-gray-300 leading-relaxed max-w-md mx-auto md:mx-0 text-sm sm:text-base mt-4" style={{ fontFamily: 'Univers, Arial, sans-serif' }}>
                 {t.footer.description}
               </p>
             </div>

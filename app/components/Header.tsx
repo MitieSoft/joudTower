@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import logoWhite from '../assets/images/Logos/logo_white.png';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Header() {
@@ -85,9 +87,17 @@ export default function Header() {
         <div className="flex items-center gap-2 md:gap-3 z-20">
           <button
             onClick={scrollToTop}
-            className="text-white font-bold text-sm sm:text-base md:text-lg leading-tight hover:opacity-80 transition-opacity cursor-pointer"
+            className="relative h-8 sm:h-10 md:h-12 lg:h-14 w-auto hover:opacity-80 transition-opacity cursor-pointer"
+            aria-label="Joud Tower Logo"
           >
-            {language === 'ar' ? 'برج الجود' : 'Joud Tower'}
+            <Image
+              src={logoWhite}
+              alt="Joud Tower Logo"
+              width={150}
+              height={60}
+              className="h-full w-auto object-contain"
+              priority
+            />
           </button>
         </div>
 

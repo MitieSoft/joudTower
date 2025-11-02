@@ -46,9 +46,13 @@ export default function OverviewSection() {
           </span>
         </div>
         <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 flex-shrink-0">
-          <button className={`px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-200 whitespace-nowrap ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
+          <a 
+            href="/Joud-Tower-Brochure.pdf" 
+            download="Joud-Tower-Brochure.pdf"
+            className={`px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-[#9d552d] hover:bg-[#8a4a26] text-white text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-200 whitespace-nowrap inline-block text-center ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}
+          >
             {t.overview.downloadBrochure}
-          </button>
+          </a>
           <button className={`hidden sm:block px-2 sm:px-3 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-3 lg:py-4 bg-white hover:bg-[#9d552d] text-[#9d552d] hover:text-white text-xs sm:text-sm md:text-sm lg:text-sm xl:text-base 2xl:text-lg font-medium rounded-full transition-all duration-1000 delay-300 whitespace-nowrap shadow-md ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-5 scale-95'}`}>
             {t.overview.getFreeConsultation}
           </button>

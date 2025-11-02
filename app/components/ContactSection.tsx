@@ -15,6 +15,8 @@ export default function ContactSection() {
     phone: '',
     countryCode: '+971',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,10 +39,39 @@ export default function ContactSection() {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitMessage(null);
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          formType: 'contact',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage({ type: 'success', text: data.message || 'Form submitted successfully!' });
+        setFormData({ name: '', email: '', phone: '', countryCode: '+971' });
+        setTimeout(() => {
+          setSubmitMessage(null);
+        }, 3000);
+      } else {
+        setSubmitMessage({ type: 'error', text: data.error || 'Failed to submit form. Please try again.' });
+      }
+    } catch (error) {
+      setSubmitMessage({ type: 'error', text: 'Network error. Please try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -160,13 +191,25 @@ export default function ContactSection() {
                 />
               </div>
 
+              {/* Submit Message */}
+              {submitMessage && (
+                <div className={`p-3 rounded-lg text-sm text-center ${
+                  submitMessage.type === 'success' 
+                    ? 'bg-green-50 text-green-700 border border-green-200' 
+                    : 'bg-red-50 text-red-700 border border-red-200'
+                }`}>
+                  {submitMessage.text}
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="flex justify-center mt-2 md:mt-3">
                 <button
                   type="submit"
-                  className="px-8 md:px-10 py-2.5 md:py-3 bg-[#9d552d] hover:bg-[#8a4a26] text-white font-bold rounded-full transition-colors uppercase tracking-wide text-sm md:text-base"
+                  disabled={isSubmitting}
+                  className="px-8 md:px-10 py-2.5 md:py-3 bg-[#9d552d] hover:bg-[#8a4a26] text-white font-bold rounded-full transition-colors uppercase tracking-wide text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t.contact.submitNow}
+                  {isSubmitting ? 'Submitting...' : t.contact.submitNow}
                 </button>
               </div>
             </form>
